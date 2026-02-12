@@ -46,7 +46,7 @@ func CreateMessage(context *gin.Context) {
 		context.Status(501)
 		return
 	}
-
+	fmt.Print("Post request received with body: ")
 	var message Message
 	context.BindJSON(&message)
 	_, err = pgdb.Model(&message).Insert()
@@ -55,7 +55,7 @@ func CreateMessage(context *gin.Context) {
 		context.String(500, err.Error())
 		return
 	}
-
+	fmt.Printf("Message created with id %d and body %s\n", message.ID, message.Body)
 	context.JSON(200, gin.H{
 		"message": message,
 	})

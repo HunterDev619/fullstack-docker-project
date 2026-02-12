@@ -63,6 +63,6 @@ func Router() *gin.Engine {
 		path := context.Request.URL.Path
 		context.String(404, "The only API of this app is /ping. Request received to path "+path+" and this resulted in 404.")
 	})
-	
+
 	return router
 }
